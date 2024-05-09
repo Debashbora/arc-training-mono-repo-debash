@@ -76,15 +76,17 @@ resource "aws_subnet" "poc_public_subnets" {
   vpc_id                  = aws_vpc.poc_vpc.id
   cidr_block              = element(var.public_cidrs, count.index)
   map_public_ip_on_launch = true
+  availability_zone       = element(var.availability_zones, count.index)
   tags = {
     Name = "poc_subnet_public${count.index + 1}"
   }
 }
 
 resource "aws_subnet" "poc_private_subnets" {
-  count      = length(var.private_cidrs)
-  vpc_id     = aws_vpc.poc_vpc.id
-  cidr_block = element(var.private_cidrs, count.index)
+  count             = length(var.private_cidrs)
+  vpc_id            = aws_vpc.poc_vpc.id
+  cidr_block        = element(var.private_cidrs, count.index)
+  availability_zone = element(var.availability_zones, count.index)
   tags = {
     Name = "poc_subnet_private${count.index + 1}"
   }
