@@ -13,7 +13,7 @@ provider "aws" {
   region = var.region
 }
 
-resource "tls_private_key" "httpdkey" {
+resource "tls_private_key" "ssh_key_generate" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
