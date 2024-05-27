@@ -8,7 +8,8 @@ db_instance_class    = "db.t3.micro"
 vpc_id               = "vpc-68f96212"
 admin_username       = "root"
 parameter_group_name = "default.mysql8.0"
-db_subnet_group_name = "default"
+subnet_ids           = ["subnet-0d980af52c1537b18", "subnet-0d7dce5a01bc9e1c6"]
+db_subnet_group_name = "poc_arc_subnet_group"
 db_port              = 3306
 skip_final_snapshot  = true
 ingress_rules = {
@@ -30,4 +31,5 @@ egress_rules = {
   }
 
 }
+multi_az = true
 

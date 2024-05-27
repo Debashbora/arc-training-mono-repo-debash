@@ -19,7 +19,7 @@ resource "aws_db_instance" "poc_arc_db" {
   identifier             = var.db_identifier
   engine                 = var.db_engine
   engine_version         = var.db_engine_version
-  multi_az               = true
+  multi_az               = var.multi_az
   instance_class         = var.db_instance_class
   username               = var.admin_username
   password               = aws_ssm_parameter.admin_db_password.value
@@ -27,8 +27,12 @@ resource "aws_db_instance" "poc_arc_db" {
   skip_final_snapshot    = var.skip_final_snapshot
   port                   = var.db_port
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
-  db_subnet_group_name   = var.db_subnet_group_name
+  db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
 
+}
+resource "aws_db_subnet_group" "rds_subnet_group" {
+  name       = var.db_subnet_group_name
+  subnet_ids = var.subnet_ids
 }
 resource "aws_security_group" "rds_sg" {
   name        = "rds_sg"
