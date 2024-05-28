@@ -5,7 +5,7 @@ module "ec2_instance" {
   vpc_id                      = data.aws_vpc.poc_vpc.id
   subnet_id                   = data.aws_subnet.poc_arc_subnet.id
   key_name                    = var.key_name
-  instance_ami                = var.instance_ami
+  instance_ami                = data.aws_ami.arc_poc_latest_linux_ami.id
   ingress_rules               = var.ingress_rules
   egress_rules                = var.egress_rules
   volume_type                 = var.root_volume_type

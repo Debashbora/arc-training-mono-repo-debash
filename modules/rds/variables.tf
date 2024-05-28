@@ -98,3 +98,7 @@ variable "subnet_ids" {
 variable "password" {
   default = null
 }
+variable "tags" {
+  description = "A map of tags to apply to the resources."
+  type        = map(string)
+}

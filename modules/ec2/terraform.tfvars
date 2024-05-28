@@ -1,6 +1,5 @@
 region                      = "us-east-1"
 instance_type               = "t2.micro"
-instance_ami                = "ami-0bb84b8ffd87024d8"
 subnet_id                   = "subnet-6781cb49"
 vpc_id                      = "vpc-68f96212"
 key_name                    = "poc_ec2_arc"

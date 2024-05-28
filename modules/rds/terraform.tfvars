@@ -32,4 +32,3 @@ egress_rules = {
 
 }
 multi_az = true
-

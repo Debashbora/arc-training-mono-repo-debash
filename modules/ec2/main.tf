@@ -20,11 +20,28 @@ resource "tls_private_key" "ssh_key_generate" {
 
 resource "aws_key_pair" "my_key_pair" {
   key_name   = var.name
-  public_key = tls_private_key.httpdkey.public_key_openssh
+  public_key = tls_private_key.ssh_key_generate.public_key_openssh
+}
+data "aws_ami" "latest_amazon_linux" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  tags = {
+    Name = "Latest Amazon Linux 2"
+  }
 }
 
 resource "aws_instance" "poc_arc_ec2" {
-  ami                         = var.instance_ami.id
+  ami                         = data.aws_ami.latest_amazon_linux.id
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_id
   key_name                    = var.name

@@ -9,7 +9,7 @@ variable "subnet_id" {
 }
 variable "instance_ami" {
   description = "The AMI to use for the EC2 instance."
-  type        = map(any)
+  type        = string
 }
 variable "instance_type" {
   type    = string

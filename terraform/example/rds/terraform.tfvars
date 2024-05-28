@@ -1,6 +1,6 @@
 region            = "us-east-1"
 multi_az          = false
-db_name           = "poc_arc_debash"
+db_name           = "arc_poc_debash"
 db_engine         = "mysql"
 db_engine_version = "8.0.35"
 db_username       = "admin"
@@ -29,3 +29,8 @@ egress_rules = {
 skip_final_snapshot = true
 environment         = "poc"
 namespace           = "arc"
+tags = {
+  Name        = "arc_poc_debash"
+  Environment = "poc"
+
+}
