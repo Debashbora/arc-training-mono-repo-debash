@@ -14,12 +14,10 @@ provider "aws" {
 }
 
 resource "aws_vpc" "poc_vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = {
-    Name = "poc_vpc"
-  }
+  tags                 = var.vpc_tags
 }
 
 resource "aws_network_acl" "poc_nacl" {

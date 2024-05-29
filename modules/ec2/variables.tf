@@ -3,27 +3,27 @@ variable "region" {
   default = "us-east-1"
 }
 variable "subnet_id" {
-  type    = string
-  default = "subnet-6781cb49"
+  type = string
+
 
 }
 variable "instance_ami" {
-  type    = string
-  default = "ami-0bb84b8ffd87024d8"
+  description = "The AMI to use for the EC2 instance."
+  type        = string
 }
 variable "instance_type" {
   type    = string
   default = "t2.micro"
 }
 variable "vpc_id" {
-  type    = string
-  default = "vpc-68f96212"
+  type = string
+
 }
-variable "ssh_key" {
-  type    = string
-  default = null
+variable "key_name" {
+  description = "The name prefix for key pair"
 }
-variable "assign_public_ip" {
+
+variable "associate_public_ip_address" {
   type    = bool
   default = false
 }
@@ -45,39 +45,41 @@ variable "delete_on_termination" {
   default = true
 }
 variable "ingress_rules" {
-  description = "A map of ingress rules"
-  type = map(object({
+  description = "A list of ingress rules for the security group."
+  type = list(object({
     from_port   = number
     to_port     = number
     protocol    = string
     cidr_blocks = list(string)
   }))
-  default = {
-    ssh = {
-      from_port   = 22
-      to_port     = 22
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-
-  }
 }
 
 variable "egress_rules" {
-  description = "A map of egress rules"
-  type = map(object({
+  description = "A list of egress rules for the security group."
+  type = list(object({
     from_port   = number
     to_port     = number
     protocol    = string
     cidr_blocks = list(string)
   }))
-  default = {
-    all_traffic = {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-
-  }
+}
+variable "private_key_path" {
+  type    = string
+  default = null
+}
+variable "key_pair" {
+  type    = string
+  default = "my_poc_key"
+}
+variable "name" {
+  default = null
+  type    = string
+}
+variable "tags" {
+  description = "A map of tags to apply to the resources."
+  type        = map(string)
+}
+variable "security_group_name" {
+  default = "poc_sg"
+  type    = string
 }

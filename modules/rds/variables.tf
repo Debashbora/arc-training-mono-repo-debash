@@ -83,7 +83,22 @@ variable "egress_rules" {
 
   }
 }
+variable "multi_az" {
+  default = true
+  type    = bool
+}
 variable "db_port" {
   type    = number
   default = 3306
+}
+variable "subnet_ids" {
+  description = "The IDs of the subnets"
+  type        = list(string)
+}
+variable "password" {
+  default = null
+}
+variable "tags" {
+  description = "A map of tags to apply to the resources."
+  type        = map(string)
 }
