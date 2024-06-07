@@ -69,7 +69,7 @@ AWS RDS/Aurora for the SourceFuse DevOps Reference Architecture Infrastructure.
 | <a name="input_name"></a> [name](#input\_name) | ID element. Usually the component or solution name, e.g. 'app' or 'jenkins'.<br>This is the only ID element not also included as a `tag`.<br>The "name" tag is set to the full `id` string. There is no tag with the value of the `name` input. | `string` | `"arc"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace for the resources. | `string` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Project name | `string` | `"sourcefuse"` | no |
-| <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"us-east-1"` | no |
+| <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"us-west-2"` | no |
 
 ## Outputs
 

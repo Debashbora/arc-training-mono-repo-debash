@@ -6,7 +6,7 @@ variable "db_admin_username" {
 
 variable "region" {
   type        = string
-  default     = "us-east-1"
+  default     = "us-west-2"
   description = "AWS region"
 }
 
