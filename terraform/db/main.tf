@@ -11,7 +11,7 @@ terraform {
     }
   }
 
-  #backend "s3" {}
+  backend "s3" {}
 }
 
 module "terraform-aws-arc-tags" {
